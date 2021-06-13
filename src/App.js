@@ -20,7 +20,7 @@ const Map = () => {
     <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      mapStyle="mapbox://styles/jcarroyos/ckpts6qpw1v6z18jxx5zvj5ip"
+      mapStyle="mapbox://styles/luisa-gonzalez/ckpud3v7b5nva17s44d2xv9p2"
       onViewportChange={viewport => {
       setViewport(viewport)
       }}

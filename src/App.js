@@ -9,7 +9,7 @@ import './App.scss';
 const initialState = {
   monumentos_data: [],
   data_loaded: false,
-  fields: ["htitulo", "mtipo", "hfecha", "id"]
+  fields: ["htitulo", "mtipo", "hfecha", "id", "img_monumento"]
 };
 
 class App extends Component {

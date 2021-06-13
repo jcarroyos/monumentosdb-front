@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
+import img_monumento_prueba from '../monumento.png';
 
 import Tooltip from "./Tooltip";
 
@@ -19,16 +20,12 @@ class Map extends Component {
   state = initialState;
 
   componentDidMount() {
-    this.prepareData();
-  }
-
-  prepareData = () => {
-    const { query, data } = this.props;
-    const map_data = data.filter((f) => f[query] > 0);
+    const { data } = this.props;
+    const map_data = data;
     this.setState({
       map_data,
     });
-  };
+  }
 
   handleCloseTooltip = () => {
     this.setState({ tooltip: null });
@@ -37,6 +34,7 @@ class Map extends Component {
   render() {
     const { map_data, tooltip, viewport } = this.state;
     const { fields } = this.props;
+    console.log(this.props);
 
     return (
       <ReactMapGL
@@ -46,20 +44,28 @@ class Map extends Component {
         onViewportChange={(viewport) => this.setState({ viewport })}
       >
         {map_data.map((data, index) => {
-          const longitude = Number(data.coordenadas.longitud);
-          const latitude = Number(data.coordenadas.latitude);
-
+          const longitude = Number(data.lugares_monumento.llatitud);
+          const latitude = Number(data.lugares_monumento.llongitud);
+          //const img_monumento = data.lugares_monumento.lmonumentoicon.formats.thumbnail.url;
           return (
             <Marker key={index} longitude={longitude} latitude={latitude}>
-              <div
+              {/* <div
                 className="map-marker"
                 style={{
-                  height: 100,
-                  width: 100,
+                  height: 1000,
+                  width: 1000,
                   color: '#ffffff'
                 }}
                 onClick={() => this.setState({ tooltip: '' })}
+              /> */}
+              <img className="map-marker"
+                src={img_monumento_prueba}
+                alt="monumento"
+                width="100px"
+                height="auto"
+                onClick={() => console.log("click")}
               />
+
             </Marker>
           );
         })}

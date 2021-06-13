@@ -42,8 +42,8 @@ $rojo: #ff0000;
 $negro: #000000;
 
 .marcador{
-  color: $blanco;
-  font-size: larger;
+  color: $rojo;
+  font-size: medium;
 }
 
 .listado{
@@ -52,7 +52,7 @@ $negro: #000000;
   width: 30vw;
   height: 100vh;
   z-index: 1;
-  margin: 0 20px;
+  margin: 0 50px;
   .texto{
     margin-top: 20px;;
     color: $negro;

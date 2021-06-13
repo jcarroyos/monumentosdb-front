@@ -1,7 +1,10 @@
-import './App.scss';
 import React, { Component } from "react";
 import axios from 'axios';
 import Map from "./components/Map";
+
+// estilos
+import './App.scss';
+
 
 const initialState = {
   monumentos_data: [],
@@ -23,12 +26,10 @@ class App extends Component {
       const response = await axios({
         method: "get",
         url: "https://monumentosdb.herokuapp.com/monumentos",
-        
+
       });
       console.log(response)
-      // console.table(response.data.data);
-      const monumentos_data = this.processData(response.data);
-
+      const monumentos_data = response.data;
       this.setState({
         monumentos_data,
         data_loaded: true,
@@ -38,26 +39,6 @@ class App extends Component {
     }
   };
 
-  processData = (data) => {
-    let processed = [];
-
-    for (const d of data) {
-      let obj = {
-        htitulo: d.htitulo,
-        id: d.id
-      };
-
-    // Patch for countries' coordinates 
-      obj['coordenadas'] = {
-        latitude: d.mlatitud,
-        longitude: d.mlognitud
-      }
-
-      processed.push(obj);
-    }
-
-    return processed;
-  };
 
   handleSetQuery = (query) => {
     this.setState({
@@ -70,6 +51,7 @@ class App extends Component {
     return data_loaded ? (
       <div className="root">
         <ol className="listado">
+          <h1>monumentosdb</h1>
           {this.state.monumentos_data.map(m => (
             <li className="texto" key={m.id}>{m.htitulo}</li>
           ))}

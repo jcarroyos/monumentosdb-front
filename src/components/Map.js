@@ -9,7 +9,7 @@ const initialState = {
   tooltip: null,
   viewport: {
     width: "100vw",
-    height: "100vh",
+    height: "70vh",
     latitude: 4.6482836,
     longitude: -74.1482346,
     zoom: 12,
@@ -54,13 +54,12 @@ class Map extends Component {
               <div
                 className="map-marker"
                 style={{
-                  height: 1000,
-                  width: 1000,
+                  height: 100,
+                  width: 100,
                   color: '#ffffff'
                 }}
                 onClick={() => this.setState({ tooltip: '' })}
               />
-              
             </Marker>
           );
         })}

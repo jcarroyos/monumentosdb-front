@@ -12,12 +12,15 @@ code {
     monospace;
 }
 
-
 // *******
 
 $blanco: #ffffff;
 $rojo: #ff0000;
 $negro: #000000;
+
+h1{
+  margin: 0;
+}
 
 .marcador{
   color: $rojo;
@@ -26,11 +29,13 @@ $negro: #000000;
 
 .listado{
   position: absolute;
-  background-color: white;
-  width: 30vw;
-  height: 100vh;
+  background-color: rgba($blanco, 0.8);
+  width: 100vw;
+  height: 25vh;
   z-index: 1;
-  margin: 0 50px;
+  margin: 0;
+  bottom: 0;
+  display: inline-block;
   .texto{
     margin-top: 20px;;
     color: $negro;

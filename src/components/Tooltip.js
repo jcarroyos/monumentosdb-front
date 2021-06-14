@@ -3,37 +3,32 @@ import { Popup } from "react-map-gl";
 
 class Tooltip extends Component {
   render() {
-    const { details, fields, handleCloseTooltip } = this.props;
-
-    const regex = /\B(?=(\d{3})+(?!\d))/g;
-
+    const { details, handleCloseTooltip } = this.props;
+    console.log(details.himagenactual[0].formats.thumbnail.url);
     return (
       <Popup
         tipSize={0}
-        longitude={details.coordinates.longitude}
-        latitude={details.coordinates.latitude}
+        longitude={details.lugares_monumento.llongitud}
+        latitude={details.lugares_monumento.llatitud}
         closeButton={true}
         onClose={() => handleCloseTooltip()}
       >
         <div className="map-tooltip">
           <div className="map-tooltip-field">
-            <div
-              className="map-tooltip-flag"
-              style={{ backgroundImage: `url(${details.flag})` }}
-            />
-            <div className="map-tooltip-header">{details.name}</div>
+            <div className="map-tooltip-header">{details.htitulo}</div>
           </div>
-
-          <div className="margin" />
-
-          {fields.map((field, index) => (
-            <div className="map-tooltip-field" key={index}>
-              <div className="map-tooltip-label">{field}:</div>
-              <div className="map-tooltip-value">
-                {details[field].toString().replace(regex, ",")}
-              </div>
-            </div>
-          ))}
+          <div className="map-tooltip-field">
+            <div className="map-tooltip-label">Fecha del hecho:</div>
+            <div className="map-tooltip-value">{details.hfecha}</div>
+          </div>
+          <div className="imagenes">
+            <img src={details.himagenantes[0].formats.thumbnail.url} />
+            <img src={details.himagenactual[0].formats.thumbnail.url} />
+          </div>
+          <div className="map-tooltip-field">
+            <div className="map-tooltip-label">Descripción:</div>
+            <div className="map-tooltip-value">{details.hdescripcion}</div>
+          </div>
         </div>
       </Popup>
     );

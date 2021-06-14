@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
-import img_monumento_prueba from '../monumento.png';
 
 import Tooltip from "./Tooltip";
 
@@ -11,8 +10,8 @@ const initialState = {
   viewport: {
     width: "100vw",
     height: "70vh",
-    latitude: 4.6482836,
-    longitude: -74.1482346,
+    latitude: 3.4550619,
+    longitude: -76.5457046,
     zoom: 12,
   },
 };
@@ -34,7 +33,6 @@ class Map extends Component {
   render() {
     const { map_data, tooltip, viewport } = this.state;
     const { fields } = this.props;
-    console.log(this.props);
 
     return (
       <ReactMapGL
@@ -46,26 +44,19 @@ class Map extends Component {
         {map_data.map((data, index) => {
           const longitude = Number(data.lugares_monumento.llatitud);
           const latitude = Number(data.lugares_monumento.llongitud);
-          //const img_monumento = data.lugares_monumento.lmonumentoicon.formats.thumbnail.url;
+
           return (
             <Marker key={index} longitude={longitude} latitude={latitude}>
-              {/* <div
+              <div
                 className="map-marker"
                 style={{
-                  height: 1000,
-                  width: 1000,
-                  color: '#ffffff'
+                  height: 20,
+                  width: 20,
+                  background: '#ffe500'
                 }}
-                onClick={() => this.setState({ tooltip: '' })}
-              /> */}
-              <img className="map-marker"
-                src={img_monumento_prueba}
-                alt="monumento"
-                width="100px"
-                height="auto"
-                onClick={() => console.log("click")}
+                //onClick={() => console.log(data)}
+                onClick={() => this.setState({ tooltip: data })}
               />
-
             </Marker>
           );
         })}

@@ -28,7 +28,6 @@ class App extends Component {
         url: "https://monumentosdb.herokuapp.com/monumentos",
 
       });
-      console.log(response)
       const monumentos_data = response.data;
       this.setState({
         monumentos_data,
@@ -50,16 +49,16 @@ class App extends Component {
 
     return data_loaded ? (
       <div className="root">
+        <Map
+          data={monumentos_data}
+          fields={fields}
+        />
         <ol className="listado">
           <h1>monumentosdb</h1>
           {this.state.monumentos_data.map(m => (
             <li className="texto" key={m.id}>{m.htitulo}</li>
           ))}
         </ol>
-        <Map
-          data={monumentos_data}
-          fields={fields}
-        />
       </div>
     ) : null;
   }

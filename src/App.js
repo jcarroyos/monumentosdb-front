@@ -1,71 +1,66 @@
-import './App.scss';
-import React, { useState, useEffect } from 'react';
-import ReactMapGL from "react-map-gl";
+import React, { Component } from "react";
 import axios from 'axios';
+import Map from "./components/Map";
 
-const Map = () => {
-  const [viewport, setViewport] = useState({
-    width: "100vw",
-    height: "200vh",
-    latitude: 4.2482836,
-    longitude: -74.1482346,
-    zoom: 10
-  });
+// estilos
+import './App.scss';
 
-  useEffect(() => {
-    // code to run on component mount
-  }, [])
 
-  return (
-    <ReactMapGL
-      {...viewport}
-      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      mapStyle="mapbox://styles/jcarroyos/ckpts6qpw1v6z18jxx5zvj5ip"
-      onViewportChange={viewport => {
-      setViewport(viewport)
-      }}
-      >
-    </ReactMapGL>
-  );
-}
+const initialState = {
+  monumentos_data: [],
+  data_loaded: false,
+  fields: ["htitulo", "mtipo", "hfecha", "id", "img_monumento"]
+};
 
-class App extends React.Component {
+class App extends Component {
   // State of your application
-  state = {
-    monumentos: [],
-    error: null,
-  };
+  state = initialState;
 
   // Fetch your monumentos immediately after the component is mounted
-  componentDidMount = async () => {
+  componentDidMount() {
+    this.fetchMonumentosData();
+  }
+
+  fetchMonumentosData = async () => {
     try {
-      const response = await axios.get('https://monumentosdb.herokuapp.com/monumentos');
-      this.setState({ monumentos: response.data });
-      console.log(response);
-    } catch (error) {
-      this.setState({ error });
+      const response = await axios({
+        method: "get",
+        url: "https://monumentosdb.herokuapp.com/monumentos",
+
+      });
+      const monumentos_data = response.data;
+      this.setState({
+        monumentos_data,
+        data_loaded: true,
+      });
+    } catch (e) {
+      console.log("no es posible conectar con la fuente de datos", e);
     }
   };
 
+
+  handleSetQuery = (query) => {
+    this.setState({
+      query,
+    });
+  };
   render() {
-    const { error, monumento } = this.state;
+    const { monumentos_data, data_loaded, fields } = this.state;
 
-    // Print errors if any
-    if (error) {
-      return <div>An error occured: {error.message}</div>;
-    }
-
-    return (
-      <div className="App">
+    return data_loaded ? (
+      <div className="root">
+        <Map
+          data={monumentos_data}
+          fields={fields}
+        />
         <ol className="listado">
-          {this.state.monumentos.map(monumento => (
-            <li className="texto" key={monumento.id}>{monumento.htitulo},<strong>{monumento.pnombre}</strong> - Lat: {monumento.mlatitud}, Long: {monumento.mlognitud}</li>
+          <h1>monumentosdb</h1>
+          {this.state.monumentos_data.map(m => (
+            <li className="texto" key={m.id}>{m.htitulo}</li>
           ))}
         </ol>
-        <Map />
       </div>
-      
-    );
+    ) : null;
   }
 }
 

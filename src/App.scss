@@ -63,7 +63,6 @@ ol.listado {
 
 .map-tooltip-field {
   display: flex;
-  align-items: center;
 }
 
 .map-tooltip-flag {
@@ -87,10 +86,12 @@ ol.listado {
   margin-right: 8px;
   text-transform: uppercase;
   font-size: small;
+  font-weight: 600;
+  min-width: 120px;
 }
 .mapboxgl-popup {
   display: contents !important;
-  img{
+  img {
     float: left;
     margin: 3px;
   }
@@ -119,47 +120,4 @@ ol.listado {
 .margin {
   display: flex;
   margin: 4px;
-}
-
-.legend {
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
-  display: flex;
-  height: 40px;
-  justify-content: space-around;
-  position: absolute;
-  top: 8px;
-  width: 350px;
-  z-index: 1;
-}
-
-.legend-field {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-}
-
-.legend-icon {
-  border-color: transparent;
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 2px;
-  height: 10px;
-  margin-right: 8px;
-  width: 10px;
-}
-
-.legend-icon-active {
-  border-color: rgba(255, 255, 255, 1);
-}
-
-.legend-label {
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-}
-
-.legend-label-active {
-  color: rgba(255, 255, 255, 1);
 }

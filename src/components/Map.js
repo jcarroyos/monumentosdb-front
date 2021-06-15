@@ -43,7 +43,7 @@ class Map extends Component {
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={TOKEN}
-        mapStyle="mapbox://styles/luisa-gonzalez/ckpud3v7b5nva17s44d2xv9p2"
+        mapStyle="mapbox://styles/luisa-gonzalez/ckpy3dolm64m717mw5dznforg"
         onViewportChange={(viewport) => this.setState({ viewport })}
       >
         {map_data.map((data, index) => {
@@ -57,7 +57,7 @@ class Map extends Component {
                 style={{
                   height: 20,
                   width: 20,
-                  background: '#ffe500'
+                  background: '#FF0080'
                 }}
                 //onClick={() => console.log(data)}
                 onClick={() => this.setState({ tooltip: data })}

@@ -15,7 +15,7 @@ class Tooltip extends Component {
       >
         <div className="map-tooltip">
           <div className="map-tooltip-field">
-            <div className="map-tooltip-header">{details.htitulo}</div>
+            <div className="map-tooltip-header">{details.hpregunta}</div>
           </div>
           <div className="map-tooltip-field">
             <div className="map-tooltip-label">Fecha del hecho:</div>

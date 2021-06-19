@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Map from "./components/Map";
+import Menu from "./components/Menu";
 
 // estilos
 import './App.scss';
@@ -53,12 +54,15 @@ class App extends Component {
           data={monumentos_data}
           fields={fields}
         />
+        <Menu />
+        <div className="caja_listadoHome">
         <ol className="listado">
-          <h1>monumentosdb</h1>
+          <h1>HITOS Y MONUMENTOS DE COLOMBIA</h1>
           {this.state.monumentos_data.map(m => (
-            <li className="texto" key={m.id}>{m.htitulo}</li>
+            <li className="texto" key={m.id}>{m.hpregunta}</li>
           ))}
         </ol>
+        </div>
       </div>
     ) : null;
   }

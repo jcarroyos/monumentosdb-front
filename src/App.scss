@@ -21,27 +21,6 @@ $negro: #000000;
   font-size: medium;
 }
 
-ol.listado {
-  position: absolute;
-  bottom: 0;
-  overflow: scroll;
-  margin: 0;
-  padding: 0 0 0 30px;
-  -webkit-overflow-scrolling: touch;
-  height: 30vh;
-  width: 90vw;
-  li {
-    padding: 5px 10px;
-    border-bottom: 1px solid #ccc;
-    &:last-child {
-      border-bottom: none;
-    }
-    &:nth-child(even) {
-      background: #f8f8f8;
-    }
-  }
-}
-
 // tooltips
 
 .map-marker {
@@ -120,4 +99,18 @@ ol.listado {
 .margin {
   display: flex;
   margin: 4px;
+}
+
+#menu {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  background-color: yellow;
+  z-index: 2;
+  .react-dropdown-select {
+    font-size: small;
+    background-color: $blanco;
+    width: 300px;
+    margin: 0 auto;
+  }
 }

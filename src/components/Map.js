@@ -1,27 +1,30 @@
 import React, { Component } from "react";
-import ReactMapGL, { Marker, NavigationControl } from "react-map-gl";
-import mapboxgl from "mapbox-gl"; // This is a dependency of react-map-gl even if you didn't explicitly install it
+import ReactMapGL, { Marker, FlyToInterpolator } from "react-map-gl";
+import mapboxgl from "mapbox-gl";
 import Tooltip from "./Tooltip";
+import Menu from "./Menu";
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
-
-
 const TOKEN = "pk.eyJ1IjoibHVpc2EtZ29uemFsZXoiLCJhIjoiY2twdWN6YWFvMDR5YzMxcDMydm9qZHpsZSJ9.xsECthZv6vJ6YEazMaYXvw";
+
+
 const initialState = {
   map_data: [],
   tooltip: null,
   viewport: {
     width: "100vw",
-    height: "70vh",
+    height: "100vh",
     latitude: 3.4550619,
     longitude: -76.5457046,
-    zoom: 12,
+    zoom: 5
   },
 };
+
 class Map extends Component {
   state = initialState;
+
 
   componentDidMount() {
     const { data } = this.props;
@@ -31,9 +34,27 @@ class Map extends Component {
     });
   }
 
+  flyTo = (lon, lat) => {
+    console.log(lat + ' | ' + lon)
+    this.setState({
+      viewport: {
+        width: "100vw",
+        height: "100vh",
+        latitude: lat,
+        longitude: lon,
+        transitionDuration: 4000,
+        transitionInterpolator: new FlyToInterpolator(),
+        zoom: 18
+      },
+    });
+  };
+
+
   handleCloseTooltip = () => {
     this.setState({ tooltip: null });
   };
+
+
 
   render() {
     const { map_data, tooltip, viewport } = this.state;
@@ -59,7 +80,6 @@ class Map extends Component {
                   width: 20,
                   background: '#FF0080'
                 }}
-                //onClick={() => console.log(data)}
                 onClick={() => this.setState({ tooltip: data })}
               />
             </Marker>
@@ -73,10 +93,10 @@ class Map extends Component {
             handleCloseTooltip={this.handleCloseTooltip}
           />
         )}
-
-        <div className="map-nav">
-          <NavigationControl
-            onViewportChange={(viewport) => this.setState({ viewport })}
+        <div id="menu">
+          <Menu
+            listado={map_data}
+            flyTo={this.flyTo}
           />
         </div>
       </ReactMapGL>

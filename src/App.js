@@ -12,6 +12,7 @@ const initialState = {
   fields: ["htitulo", "mtipo", "hfecha", "id", "img_monumento"]
 };
 
+
 class App extends Component {
   // State of your application
   state = initialState;
@@ -53,12 +54,6 @@ class App extends Component {
           data={monumentos_data}
           fields={fields}
         />
-        <ol className="listado">
-          <h1>monumentosdb</h1>
-          {this.state.monumentos_data.map(m => (
-            <li className="texto" key={m.id}>{m.htitulo}</li>
-          ))}
-        </ol>
       </div>
     ) : null;
   }

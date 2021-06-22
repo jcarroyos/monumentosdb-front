@@ -39,13 +39,13 @@ class Tooltip extends Component {
                   {details.hfecha}
                 </div>
                 <div className="map-tooltip-field">
-                  {details.participantes[0].pnombre}
+                  {/* {details.participantes[0].pnombre} */}
                 </div>
                 <div className="map-tooltip-field">
                   {details.hpregunta}
                 </div>
                 <div className="map-tooltip-img">
-                  <img alt="imagen" src={details.himagenantes[0].formats.small.url} />
+                  <img alt="imagen" src={details.himagenantes[0].formats.thumbnail.url} />
                 </div>
                 <div className="map-tooltip-field">
                   {details.lugares_monumento.lnombrelugar}
@@ -61,7 +61,7 @@ class Tooltip extends Component {
                   {details.hdescripcion}
                 </div>
                 <div className="map-tooltip-field">
-                  {details.participantes[0].pnombre}
+                  {/* {details.participantes[0].pnombre} */}
                 </div>
                 <div className="map-tooltip-field">
                   {details.participantes[0].pdescripcion}
@@ -93,7 +93,7 @@ class Tooltip extends Component {
                   {details.hestadoactual}
                 </div>
                 <div className="map-tooltip-img">
-                  <img alt="imagen" src={details.himagenactual[0].formats.small.url} />
+                  <img alt="imagen" src={details.himagenactual[0].formats.thumbnail.url} />
                 </div>
                 <div className="map-tooltip-field">
                   {details.lugares_monumento.lnombrelugar}

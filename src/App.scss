@@ -37,6 +37,7 @@ code {
 $blanco: #ffffff;
 $rojo: #ff0000;
 $negro: #000000;
+$amarillo: #F9D22D;
 
 .marcador {
   color: $rojo;
@@ -155,7 +156,31 @@ $negro: #000000;
   .react-dropdown-select {
     font-size: small;
     background-color: $blanco;
-    width: max-content;
+    width: 240px;
     margin: 20px auto;
   }
+}
+
+.somos {
+  position: fixed;
+  bottom: 40px;
+  width: 300px;
+  font-size: small;
+  background: rgba($negro, 0.85);
+  color: $blanco;
+  padding: 20px 10px;
+  left: 20px;
+  z-index: 0;
+  a:link, a:hover, a:active{
+    color: $amarillo;
+  }
+}
+
+.icono-somos {
+  font-size: small;
+  position:fixed;
+  bottom: 35px;
+  left: 20px;
+  z-index: 3;
+  cursor: pointer;
 }

@@ -1,4 +1,5 @@
-<img width="1100" alt="Screen Shot 2021-06-14 at 8 58 10 AM" src="https://user-images.githubusercontent.com/4398275/121905087-65142080-ccef-11eb-81dd-e574b7882ec0.png">
+<img width="1263" alt="Screen Shot 2021-06-22 at 3 31 19 PM" src="https://user-images.githubusercontent.com/4398275/122995197-e6faee00-d36e-11eb-869a-c4328201795b.png">
+
 
 Ver en producción: 
 

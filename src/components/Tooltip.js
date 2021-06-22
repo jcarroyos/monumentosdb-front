@@ -24,7 +24,7 @@ class Tooltip extends Component {
         onClose={() => handleCloseTooltip()}
       >
         <div className="map-tooltip">
-        <h2>{details.htitulo}</h2>
+          <h2>{details.htitulo}</h2>
           <Tabs>
             <TabList>
               <Tab>Manifestación</Tab>
@@ -56,13 +56,13 @@ class Tooltip extends Component {
                 <div className="map-tooltip-field">
                   {details.hpregunta}
                 </div>
-                <div className="map-tooltip-img">
-                  {this.props.details.himagenantes.map((img, index) => (
-                    <div key={index}>
+                {this.props.details.himagenantes.map((img, index) => (
+                  <div className="map-tooltip-img" key={index}>
+                    <a target="_blank" href={img.url}>
                       <img alt="imagen" src={img.url} />
-                    </div>
-                  ))}
-                </div>
+                    </a>
+                  </div>
+                ))}
                 <div className="map-tooltip-field">
                   <small>{details.lugares_monumento.lnombrelugar}</small>
                 </div>
@@ -108,7 +108,9 @@ class Tooltip extends Component {
                 <div className="map-tooltip-img">
                   {this.props.details.himagenactual.map((img, index) => (
                     <div key={index}>
-                      <img alt="imagen" src={img.url} />
+                      <a target="_blank" href={img.url}>
+                        <img alt="imagen" src={img.url} />
+                      </a>
                     </div>
                   ))}
                 </div>

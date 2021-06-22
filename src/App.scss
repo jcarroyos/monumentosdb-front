@@ -1,3 +1,25 @@
+@mixin breakpoint($class) {
+  @if $class == xs {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $class == sm {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $class == md {
+    @media (min-width: 992px) {
+      @content;
+    }
+  } @else if $class == lg {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -38,10 +60,23 @@ $negro: #000000;
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  .container-box{
+    display: inline-block;
+    height: 88vh;
+    width: 90%;
+    overflow: scroll;
+  }
 }
 
 .map-tooltip-field {
   display: flex;
+  border: 1px dashed gray;
+  padding: 3px;
+  margin: 3px;
+}
+.map-tooltip-img img{
+  width: 30%;
+  height: auto;
 }
 
 .map-tooltip-flag {
@@ -77,10 +112,13 @@ $negro: #000000;
 }
 .mapboxgl-popup-content {
   background-color: rgba($blanco, 0.9);
-  width: 50%;
-  height: 50%;
-  left: 25vw;
-  top: 20vh;
+  @include breakpoint(lg) {
+    width: 50%;
+    height: 50%;
+    left: 25vw;
+    top: 20vh;
+  }
+
   border-radius: 5px !important;
 }
 

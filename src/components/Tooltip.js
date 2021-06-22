@@ -64,7 +64,7 @@ class Tooltip extends Component {
                   {/* {details.participantes[0].pnombre} */}
                 </div>
                 <div className="map-tooltip-field">
-                  {details.participantes[0].pdescripcion}
+                  {/* {details.participantes[0].pdescripcion} */}
                 </div>
               </TabPanel>
 

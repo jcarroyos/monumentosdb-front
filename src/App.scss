@@ -70,6 +70,13 @@ $negro: #000000;
 
 .map-tooltip-field {
   display: flex;
+  border: 1px dashed gray;
+  padding: 3px;
+  margin: 3px;
+}
+.map-tooltip-img img{
+  width: 30%;
+  height: auto;
 }
 
 .map-tooltip-flag {

@@ -5,7 +5,10 @@ import ReactHtmlParser from 'react-html-parser';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+
+
 class Tooltip extends Component {
+
   render() {
     const { details, handleCloseTooltip } = this.props;
 
@@ -39,7 +42,13 @@ class Tooltip extends Component {
                   {details.hfecha}
                 </div>
                 <div className="map-tooltip-field">
-                  {/* {details.participantes[0].pnombre} */}
+                  <ul>
+                  {this.props.details.participantes.map((participante, index) => (
+                    <li key={index}>
+                      {participante.pnombre}
+                    </li>
+                  ))}
+                  </ul>
                 </div>
                 <div className="map-tooltip-field">
                   {details.hpregunta}
@@ -61,10 +70,10 @@ class Tooltip extends Component {
                   {details.hdescripcion}
                 </div>
                 <div className="map-tooltip-field">
-                  {/* {details.participantes[0].pnombre} */}
+                  {details.participantes.pnombre}
                 </div>
                 <div className="map-tooltip-field">
-                  {/* {details.participantes[0].pdescripcion} */}
+                  {details.participantes.pdescripcion}
                 </div>
               </TabPanel>
 
@@ -107,7 +116,6 @@ class Tooltip extends Component {
                 </div>
                 <div className="map-tooltip-field">
                   {ReactHtmlParser(details.hfuenteinfo)}
-
                 </div>
 
               </TabPanel>

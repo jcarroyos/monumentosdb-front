@@ -24,6 +24,7 @@ class Tooltip extends Component {
         onClose={() => handleCloseTooltip()}
       >
         <div className="map-tooltip">
+        <h2>{details.htitulo}</h2>
           <Tabs>
             <TabList>
               <Tab>Manifestación</Tab>
@@ -32,48 +33,54 @@ class Tooltip extends Component {
               <Tab>Estado actual</Tab>
               <Tab>Fuentes</Tab>
             </TabList>
-            <div className="container-box">
+            <div className="container-box"
+              style={{
+                height: 'auto',
+                width: 'auto'
+              }}
+            >
               {/* Manifestación */}
               <TabPanel>
                 <div className="map-tooltip-field">
-                  {details.htitulo}
-                </div>
-                <div className="map-tooltip-field">
-                  {details.hfecha}
+                  <small>Fecha hecho: {details.hfecha}</small>
                 </div>
                 <div className="map-tooltip-field">
                   <ul>
-                  {this.props.details.participantes.map((participante, index) => (
-                    <li key={index}>
-                      {participante.pnombre}
-                    </li>
-                  ))}
+                    {this.props.details.participantes.map((participante, index) => (
+                      <li key={index}>
+                        {participante.pnombre}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="map-tooltip-field">
                   {details.hpregunta}
                 </div>
                 <div className="map-tooltip-img">
-                  <img alt="imagen" src={details.himagenantes[0].formats.thumbnail.url} />
+                  {this.props.details.himagenantes.map((img, index) => (
+                    <div key={index}>
+                      <img alt="imagen" src={img.url} />
+                    </div>
+                  ))}
                 </div>
                 <div className="map-tooltip-field">
-                  {details.lugares_monumento.lnombrelugar}
+                  <small>{details.lugares_monumento.lnombrelugar}</small>
                 </div>
               </TabPanel>
 
               {/* Descripción */}
               <TabPanel>
                 <div className="map-tooltip-field">
-                  {details.htitulo}
-                </div>
-                <div className="map-tooltip-field">
                   {details.hdescripcion}
                 </div>
                 <div className="map-tooltip-field">
-                  {details.participantes.pnombre}
-                </div>
-                <div className="map-tooltip-field">
-                  {details.participantes.pdescripcion}
+                  <ul>
+                    {this.props.details.participantes.map((participante, index) => (
+                      <li key={index}>
+                        {participante.pnombre}: {participante.pdescripcion}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </TabPanel>
 
@@ -96,24 +103,22 @@ class Tooltip extends Component {
               {/* Estado actual */}
               <TabPanel>
                 <div className="map-tooltip-field">
-                  {details.htitulo}
-                </div>
-                <div className="map-tooltip-field">
                   {details.hestadoactual}
                 </div>
                 <div className="map-tooltip-img">
-                  <img alt="imagen" src={details.himagenactual[0].formats.thumbnail.url} />
+                  {this.props.details.himagenactual.map((img, index) => (
+                    <div key={index}>
+                      <img alt="imagen" src={img.url} />
+                    </div>
+                  ))}
                 </div>
                 <div className="map-tooltip-field">
-                  {details.lugares_monumento.lnombrelugar}
+                  <small>{details.lugares_monumento.lnombrelugar}</small>
                 </div>
               </TabPanel>
 
               {/* Fuentes */}
               <TabPanel>
-                <div className="map-tooltip-field">
-                  {details.htitulo}
-                </div>
                 <div className="map-tooltip-field">
                   {ReactHtmlParser(details.hfuenteinfo)}
                 </div>
